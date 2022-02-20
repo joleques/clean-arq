@@ -8,7 +8,6 @@ Nesse projeto tem os exercicios propostos ao longo do curso de clean architectur
 
 ## Exercicios
 
-#
 
 ## Parte 1: 
 
