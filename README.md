@@ -29,9 +29,11 @@ Considere
 O valor do frete será calculado de acordo com a fórmula
 Preço do Frete = distância (km) * volume (m3) * (densidade/100)
 O valor mínimo é de R$10,00
-Não existem diferentes modalidades de frete (normal, expresso, …) e a origem dos produtos é sempre a mesma, 
-além disso não existe diferença no destino, se é capital ou interior, o cálculo é feito basicamente 
-considerando a distância, o volume e a densidade transportados
+Não existem diferentes modalidades de frete (normal, expresso, …) 
+e a origem dos produtos é sempre a mesma, além disso não existe 
+diferença no destino, se é capital ou interior, o cálculo 
+é feito basicamente considerando a distância, o volume e a 
+densidade transportados
 
 
 distância: 1000 (fixo)
