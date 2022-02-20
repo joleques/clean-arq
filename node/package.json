@@ -1,0 +1,20 @@
+{
+  "name": "pocs-clean-arq",
+  "version": "0.0.1",
+  "description": "Projetos do curso do Branas",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && jest dist/",
+    "tsc:init": "tsc --init",
+    "build": "tsc"
+  },
+  "author": "joleques",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "jest": "^27.5.1"
+  }
+}

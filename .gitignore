@@ -1,0 +1,12 @@
+# node
+/node/node_modules/
+/node/build/
+/node/lib/
+/node/coverage
+/node/dist/
+
+
+.DS_Store
+*.log
+.DS_Store
+.env
