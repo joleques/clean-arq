@@ -1,0 +1,3 @@
+## Inicializando
+
+-- Ainda não iniciado
