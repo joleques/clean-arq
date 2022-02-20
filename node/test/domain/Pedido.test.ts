@@ -1,5 +1,5 @@
-import CupomDesconto from "../../domain/CupomDesconto"
-import Pedido from "../../domain/Pedido"
+import CupomDesconto from "../../src/domain/CupomDesconto"
+import Pedido from "../../src/domain/Pedido"
 
 test("Não deve fazer um pedido com cpf inválido", () => {
     try{

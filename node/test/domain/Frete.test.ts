@@ -1,7 +1,7 @@
-import Dimensao from "../../domain/Dimensao"
-import Frete from "../../domain/Frete"
-import Peso from "../../domain/Peso"
-import Produto from "../../domain/Produto"
+import Dimensao from "../../src/domain/Dimensao"
+import Frete from "../../src/domain/Frete"
+import Peso from "../../src/domain/Peso"
+import Produto from "../../src/domain/Produto"
 
 
 test("Deve calcular o valor do frete com base nas dimensões (altura, largura e profundidade em cm) e o peso dos produtos (em kg)", () => {

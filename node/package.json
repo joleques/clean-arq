@@ -4,7 +4,8 @@
   "description": "Projetos do curso do Branas",
   "main": "index.js",
   "scripts": {
-    "test": "tsc && jest dist/",
+    "test": "tsc && jest ./dist && rm -rf ./dist",
+    "coverage": "tsc && jest ./dist --coverage && rm -rf ./dist",
     "tsc:init": "tsc --init",
     "build": "tsc"
   },

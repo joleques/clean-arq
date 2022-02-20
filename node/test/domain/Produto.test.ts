@@ -1,6 +1,6 @@
-import Dimensao from "../../domain/Dimensao"
-import Peso from "../../domain/Peso"
-import Produto from "../../domain/Produto"
+import Dimensao from "../../src/domain/Dimensao"
+import Peso from "../../src/domain/Peso"
+import Produto from "../../src/domain/Produto"
 
 test("Deve calcular o indice de calculo para o frete com base no volume e densidade", () => {
 
