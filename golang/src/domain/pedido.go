@@ -9,16 +9,12 @@ type Pedido struct {
 	cpf   string
 	itens []ItemPedido
 	cupom Cupom
+	Frete Frete
 }
 
 type ItemPedido struct {
-	Item       Item
+	Item       Produto
 	Quantidade int
-}
-
-type Item struct {
-	descricao string
-	valor     float64
 }
 
 type Cupom struct {
@@ -31,15 +27,24 @@ func NewPedido(cpf string) (*Pedido, error) {
 	if !ehValidoCPF {
 		return nil, errors.New("Pedido não pode ser realizado, pq o CPF é invalido.")
 	}
-	return &Pedido{cpf, nil, Cupom{0, time.Now()}}, nil
+	return &Pedido{cpf: cpf, itens: nil, cupom: Cupom{0, time.Now()}, Frete: Frete{}}, nil
 }
 
-func (pedido *Pedido) AddItem(descricao string, valor float64, quantidade int) {
+func (pedido *Pedido) AddItem(descricao string, valor float64, quantidade int, dimensao Dimensao, peso Peso) {
+	produto := Produto{
+		Descricao: descricao,
+		Valor:     valor,
+		Dimensao:  dimensao,
+		Peso:      peso,
+	}
+
 	itemPedido := ItemPedido{
-		Item:       Item{descricao, valor},
+		Item:       produto,
 		Quantidade: quantidade,
 	}
+
 	pedido.itens = append(pedido.itens, itemPedido)
+	pedido.Frete.AddProdutos(produto, quantidade)
 }
 
 func (pedido Pedido) GetTotal() float64 {
@@ -47,6 +52,8 @@ func (pedido Pedido) GetTotal() float64 {
 	for _, itemPedido := range pedido.itens {
 		total += itemPedido.GetTotal()
 	}
+	total += pedido.Frete.GetValor()
+
 	if pedido.cupom.Percentual > 0 {
 		return pedido.cupom.AplicarDesconto(total)
 	}
@@ -54,7 +61,7 @@ func (pedido Pedido) GetTotal() float64 {
 }
 
 func (itemPedido ItemPedido) GetTotal() float64 {
-	return itemPedido.Item.valor * float64(itemPedido.Quantidade)
+	return itemPedido.Item.Valor * float64(itemPedido.Quantidade)
 }
 
 func (pedido *Pedido) AddCupomDesconto(cupom Cupom) {

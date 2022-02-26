@@ -15,5 +15,8 @@ func (dimensao Dimensao) GetVolume() float64 {
 }
 
 func converteMetros(distancia float64) float64 {
+	if distancia == 0 {
+		return 0.0
+	}
 	return distancia / 100
 }

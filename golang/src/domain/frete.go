@@ -3,21 +3,20 @@ package domain
 const distancia = 1000
 
 type Frete struct {
-	produtos []Produto
+	Valor float64
 }
 
-func (frete *Frete) AddProdutos(produto Produto) {
-	frete.produtos = append(frete.produtos, produto)
+func (frete *Frete) AddProdutos(produto Produto, quantidade int) {
+	if quantidade == 0 {
+		quantidade = 1
+	}
+	frete.Valor += (distancia * produto.getIndiceCalculoFrete()) * float64(quantidade)
 }
 
 func (frete Frete) GetValor() float64 {
-	valor := 0.0
-	for _, produto := range frete.produtos {
-		valor += distancia * produto.getIndiceCalculoFrete()
-	}
-	if valor > 10 {
-		return valor
+	if frete.Valor > 0 && frete.Valor < 10 {
+		return 10.0
 	}
 
-	return 10.0
+	return frete.Valor
 }

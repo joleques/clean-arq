@@ -20,9 +20,9 @@ func Test_deveFazerPedioComCPFValido(t *testing.T) {
 
 func Test_deveFAzerPedidoComTresItens(t *testing.T) {
 	pedido, err := NewPedido("355.203.280-05")
-	pedido.AddItem("123-ASGRTO-789", 1500, 2)
-	pedido.AddItem("Guitarra", 500, 1)
-	pedido.AddItem("Geladeira", 100, 1)
+	pedido.AddItem("123-ASGRTO-789", 1500, 2, Dimensao{}, Peso{})
+	pedido.AddItem("Guitarra", 500, 1, Dimensao{}, Peso{})
+	pedido.AddItem("Geladeira", 100, 1, Dimensao{}, Peso{})
 
 	assert.Nil(t, err)
 	assert.Equal(t, 3600.0, pedido.GetTotal())
@@ -39,8 +39,8 @@ func Test_deveFazerPedidoComCupomDesconto(t *testing.T) {
 	dataExpiracao := time.Now().Add(tempoExpiracao)
 	cupom := Cupom{10, dataExpiracao}
 	pedido, err := NewPedido("355.203.280-05")
-	pedido.AddItem("Camera", 2000, 2)
-	pedido.AddItem("Guitarra", 1000, 1)
+	pedido.AddItem("Camera", 2000, 2, Dimensao{}, Peso{})
+	pedido.AddItem("Guitarra", 1000, 1, Dimensao{}, Peso{})
 	pedido.AddCupomDesconto(cupom)
 
 	assert.Nil(t, err)
@@ -51,8 +51,8 @@ func Test_naoDeveAplicarDescontoExpirado(t *testing.T) {
 	dataExpiracao := time.Date(2021, 12, 5, 12, 45, 0, 0, time.Local)
 	cupom := Cupom{10, dataExpiracao}
 	pedido, err := NewPedido("355.203.280-05")
-	pedido.AddItem("Camera", 2000, 2)
-	pedido.AddItem("Guitarra", 1000, 1)
+	pedido.AddItem("Camera", 2000, 2, Dimensao{}, Peso{})
+	pedido.AddItem("Guitarra", 1000, 1, Dimensao{}, Peso{})
 	pedido.AddCupomDesconto(cupom)
 
 	assert.Nil(t, err)
@@ -64,10 +64,19 @@ func Test_deveAplicarDescontoQuandoNaoEstaExpirado(t *testing.T) {
 	dataExpiracao := time.Now().Add(tempoExpiracao)
 	cupom := Cupom{10, dataExpiracao}
 	pedido, err := NewPedido("355.203.280-05")
-	pedido.AddItem("Camera", 2000, 2)
-	pedido.AddItem("Guitarra", 1000, 1)
+	pedido.AddItem("Camera", 2000, 2, Dimensao{}, Peso{})
+	pedido.AddItem("Guitarra", 1000, 1, Dimensao{}, Peso{})
 	pedido.AddCupomDesconto(cupom)
 
 	assert.Nil(t, err)
 	assert.Equal(t, 4500.0, pedido.GetTotal())
+}
+
+func Test_deveCalcularTotalPedidoComFrete(t *testing.T) {
+	pedido, err := NewPedido("355.203.280-05")
+	pedido.AddItem("Camera", 2000, 2, Dimensao{20, 15, 10}, Peso{1})
+	pedido.AddItem("Guitarra", 1000, 1, Dimensao{100, 30, 10}, Peso{3})
+
+	assert.Nil(t, err)
+	assert.Equal(t, 5049.98, pedido.GetTotal())
 }

@@ -3,6 +3,7 @@ package domain
 type Produto struct {
 	Codigo    string
 	Descricao string
+	Valor     float64
 	Dimensao  Dimensao
 	Peso      Peso
 }

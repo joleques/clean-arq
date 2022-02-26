@@ -7,6 +7,9 @@ type Peso struct {
 }
 
 func (peso Peso) CalcularDensidade(volume float64) float64 {
+	if volume == 0 {
+		return 0
+	}
 	densidade := math.Floor(peso.Valor / volume)
 	return densidade
 }
