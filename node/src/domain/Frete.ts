@@ -4,22 +4,20 @@ export default class Frete{
 
     private distancia: number
 
-    private produtos: Produto[]
+    private valor: number;
 
     constructor(){
         this.distancia = 1000
-        this.produtos = []
+        this.valor = 0
     }
 
-    public addProdutos(produto: Produto){
-        this.produtos.push(produto)
+    public addProdutos(produto: Produto, quantidade?: number){
+        if (!quantidade) quantidade = 1
+        if (produto)
+            this.valor += (this.distancia * produto.getIndiceCalculoFrete()) * quantidade
     }
 
     public getValor(): number{
-        let valor = 0
-        this.produtos.forEach((produto) => {
-            valor += this.distancia * produto.getIndiceCalculoFrete()
-        })
-        return valor < 10 ? 10.00 : valor
+        return this.valor > 0 && this.valor < 10 ? 10.00 : parseFloat(this.valor.toFixed(2))
     }
 }

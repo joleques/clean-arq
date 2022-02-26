@@ -1,15 +1,17 @@
-import Item from "./Item";
+import Dimensao from "./Dimensao";
+import Peso from "./Peso";
+import Produto from "./Produto";
 
 export default class ItemPedido{
 
-    private item: Item
+    private produto: Produto;
 
-    constructor(codigoProduto: string, valor: number, readonly quantidade: number){
-        this.item = new Item(codigoProduto, valor)
+    constructor(descricao: string, valor: number, readonly quantidade: number, readonly dimensao?: Dimensao, readonly peso?: Peso){
+        this.produto = new Produto("", descricao, valor, dimensao, peso)
     }
 
     public getTotal(): number{
-        return this.item.valor * this.quantidade
+        return this.produto.valor * this.quantidade
     }
     
 }

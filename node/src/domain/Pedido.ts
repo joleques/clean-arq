@@ -1,6 +1,10 @@
 import CPF from "./CPF";
 import CupomDesconto from "./CupomDesconto";
+import Dimensao from "./Dimensao";
+import Frete from "./Frete";
 import ItemPedido from "./ItemPedido";
+import Peso from "./Peso";
+import Produto from "./Produto";
 
 export default class Pedido{
     
@@ -10,10 +14,16 @@ export default class Pedido{
 
     private cupomDesconto: CupomDesconto
 
-    constructor(cpf: string){
+    private date: Date
+
+    private frete: Frete
+
+    constructor(cpf: string, date: Date){
         this.cpf = new CPF(cpf);
         this.itens = []
         this.cupomDesconto = new CupomDesconto(0)
+        this.date = date
+        this.frete = new Frete()
         this.validate();
     }
 
@@ -22,8 +32,9 @@ export default class Pedido{
             throw new Error("Pedido não pode ser realizado, pq o CPF é invalido.")
     }
 
-    public addItem(codigoProduto: string, valor: number, quantidade: number){
-        this.itens.push(new ItemPedido(codigoProduto, valor, quantidade))
+    public addItem(descricao: string, valor: number, quantidade: number, dimensao?: Dimensao, peso?: Peso){
+        this.frete.addProdutos(new Produto("", descricao, valor, dimensao, peso), quantidade)
+        this.itens.push(new ItemPedido(descricao, valor, quantidade, dimensao, peso))
     }
 
     public addCupomDesconto(cupomDesconto: CupomDesconto){
@@ -36,8 +47,11 @@ export default class Pedido{
             total += itemPedido.getTotal()
         })
 
+        total += this.frete.getValor()
+
         if (this.cupomDesconto)
-            return this.cupomDesconto.aplicarDesconto(total)
+            return this.cupomDesconto.aplicarDesconto(total, this.date)
+            
 
         return total
     }
