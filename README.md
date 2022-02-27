@@ -21,6 +21,12 @@ Nesse projeto tem os exercicios propostos ao longo do curso de clean architectur
 - Deve calcular o valor do frete com base nas dimensões (altura, largura e profundidade em cm) e o peso dos produtos (em kg)
 - Deve retornar o preço mínimo de frete caso ele seja superior ao valor calculado
 
+## Parte 3:
+- Deve gerar o código do pedido
+- Deve fazer um pedido (caso de uso)
+- Deve simular o frete (caso de uso)
+- Deve validar o cupom de desconto (caso de uso) 
+
 Obs:
 ```
 Considere
@@ -33,6 +39,9 @@ e a origem dos produtos é sempre a mesma, além disso não existe
 diferença no destino, se é capital ou interior, o cálculo 
 é feito basicamente considerando a distância, o volume e a 
 densidade transportados
+
+O código do pedido é formado por AAAAPPPPPPPP onde AAAA representa o ano e o PPPPPPPP representa um sequencial do pedido
+Implementar um mecanismo de persistência desacoplado utilizando banco de dados
 
 
 distância: 1000 (fixo)
