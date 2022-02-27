@@ -1,4 +1,4 @@
-import CupomDesconto from "../../src/domain/CupomDesconto"
+import CupomDesconto from "../../../src/domain/CupomDesconto"
 
 
 test("Criar cupom desconto expirado", () =>{

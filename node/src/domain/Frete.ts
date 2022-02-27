@@ -15,6 +15,7 @@ export default class Frete{
         if (!quantidade) quantidade = 1
         if (produto)
             this.valor += (this.distancia * produto.getIndiceCalculoFrete()) * quantidade
+        
     }
 
     public getValor(): number{

@@ -1,4 +1,4 @@
-import Peso from "../../src/domain/Peso"
+import Peso from "../../../src/domain/Peso"
 
 
 test("Calcular densidade do peso quando passar o volume", () => {

@@ -1,7 +1,7 @@
-import CupomDesconto from "../../src/domain/CupomDesconto"
-import Dimensao from "../../src/domain/Dimensao"
-import Pedido from "../../src/domain/Pedido"
-import Peso from "../../src/domain/Peso"
+import CupomDesconto from "../../../src/domain/CupomDesconto"
+import Dimensao from "../../../src/domain/Dimensao"
+import Pedido from "../../../src/domain/Pedido"
+import Peso from "../../../src/domain/Peso"
 
 test("Não deve fazer um pedido com cpf inválido", () => {
     try{
