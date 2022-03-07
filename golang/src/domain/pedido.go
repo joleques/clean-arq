@@ -15,7 +15,7 @@ type CupomRepositorio interface {
 
 type Pedido struct {
 	Id    string
-	cpf   string
+	Cpf   string
 	itens []ItemPedido
 	cupom Cupom
 	Frete Frete
@@ -36,7 +36,7 @@ func NewPedido(cpf string) (*Pedido, error) {
 	if !ehValidoCPF {
 		return nil, errors.New("Pedido não pode ser realizado, pq o CPF é invalido.")
 	}
-	return &Pedido{cpf: cpf, itens: nil, cupom: Cupom{Percentual: 0, DataExpiracao: time.Now()}, Frete: Frete{}}, nil
+	return &Pedido{Cpf: cpf, itens: nil, cupom: Cupom{Percentual: 0, DataExpiracao: time.Now()}, Frete: Frete{}}, nil
 }
 
 func (pedido *Pedido) AddItem(descricao string, valor float64, quantidade int, dimensao Dimensao, peso Peso) {

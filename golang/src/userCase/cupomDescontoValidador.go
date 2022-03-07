@@ -6,11 +6,11 @@ import (
 )
 
 type DescontoValidador struct {
-	repositorio domain.CupomRepositorio
+	Repositorio domain.CupomRepositorio
 }
 
-func (validador DescontoValidador) ehValido(cupomDTO DTOs.CupomDTO) DTOs.ResultadoCupomValidador {
-	cupom := validador.repositorio.GetCupom(cupomDTO.Codigo)
+func (validador DescontoValidador) EhValido(cupomDTO DTOs.CupomDTO) DTOs.ResultadoCupomValidador {
+	cupom := validador.Repositorio.GetCupom(cupomDTO.Codigo)
 	if cupom != nil {
 		expirado := cupom.CupomExpirado()
 		if !expirado {

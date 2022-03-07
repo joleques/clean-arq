@@ -1,7 +1,13 @@
 ## Inicializando
 
-- Run test Domain
+- Run test Unit
 
 ```
-go test clean-arq-go/src/domain
+go test clean-arq-go/test/unit
+```
+
+- Run test Integration
+
+```
+go test clean-arq-go/test/integration
 ```

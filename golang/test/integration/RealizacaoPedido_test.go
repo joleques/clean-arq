@@ -1,7 +1,8 @@
-package userCase
+package integration
 
 import (
 	"clean-arq-go/src/infra/memoryRepo"
+	"clean-arq-go/src/userCase"
 	"clean-arq-go/src/userCase/DTOs"
 	"github.com/stretchr/testify/assert"
 	"testing"
@@ -17,7 +18,7 @@ func Test_DeveSalvarPedido(t *testing.T) {
 		},
 	}
 
-	realizacaoPedido := RealizacaoPedido{Repositorio: pedidoMemoria}
+	realizacaoPedido := userCase.RealizacaoPedido{Repositorio: pedidoMemoria}
 
 	resultadoRealizacaoPedido := realizacaoPedido.Fazer(pedidoDTO)
 

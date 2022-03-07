@@ -8,7 +8,7 @@ type Produto struct {
 	Peso      Peso
 }
 
-func (produto Produto) getIndiceCalculoFrete() float64 {
+func (produto Produto) GetIndiceCalculoFrete() float64 {
 	volume := produto.Dimensao.GetVolume()
 	densidade := produto.Peso.CalcularDensidade(volume)
 

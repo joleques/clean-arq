@@ -10,7 +10,7 @@ func (frete *Frete) AddProdutos(produto Produto, quantidade int) {
 	if quantidade == 0 {
 		quantidade = 1
 	}
-	frete.Valor += (distancia * produto.getIndiceCalculoFrete()) * float64(quantidade)
+	frete.Valor += (distancia * produto.GetIndiceCalculoFrete()) * float64(quantidade)
 }
 
 func (frete Frete) GetValor() float64 {
